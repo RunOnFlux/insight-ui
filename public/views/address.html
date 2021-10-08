@@ -7,11 +7,14 @@
       <span class="btn-copy" ngclipboard data-clipboard-text="{{address.addrStr}}"><img class="clippy" width="13" src="../img/clippy.svg" alt="Copy to clipboard"></span>
       <span ng-if="address.addrStr == 't3c51GjrkUg7pUiS8bzNdTnW2hD25egWUih'"> Flux Foundation <span style="font-weight:bold">Locked</span></span>
 			<span ng-if="address.addrStr == 't1XWTigDqS5Dy9McwQc752ShtZV1ffTMJB3'"> Flux Foundation <span style="font-weight:bold">Operational</span></span>
+      <span ng-if="address.addrStr == 't1eabPBaLCqNgttQMnAoohPaQM6u2vFwTNJ'"> Flux Foundation <span style="font-weight:bold">Operational</span></span>
+      <span ng-if="address.addrStr == 't1abAp9oZenibGLFuZKyUjmL6FiATTaCYaj'"> Flux Swap Pool <span style="font-weight:bold">Hot</span></span>
+      <span ng-if="address.addrStr == 't1cjcLaDHkNcuXh6uoyNL7u1jx7GxvzfYAN'"> Flux Swap Pool <span style="font-weight:bold">Cold</span></span>
 			<span ng-if="address.addrStr == 't1gZgxSEr9RcMBcUyHvkN1U2bJsz3CEV2Ve'"> Flux Foundation <span style="font-weight:bold">Mining</span></span>
       <span ng-if="address.addrStr == 't3XjYMBvwxnXVv9jqg4CgokZ3f7kAoXPQL8'"> Flux Foundation <span style="font-weight:bold">Locked</span></span>
       <span ng-if="address.addrStr == 't3PMbbA5YBMrjSD3dD16SSdXKuKovwmj6tS'"> Flux Listings <span style="font-weight:bold">Locked</span></span>
       <span ng-if="address.addrStr == 't3ThbWogDoAjGuS6DEnmN1GWJBRbVjSUK4T'"> Flux Swap Pool <span style="font-weight:bold">Locked</span></span>
-      <span ng-if="address.addrStr == 't1NHmfB1xN74LsFHe12DnrRLh4c1qBwvGoX'"> Undisclosed <span style="font-weight:bold">Exchange Cold Storage</span></span>
+      <!-- <span ng-if="address.addrStr == 't1NHmfB1xN74LsFHe12DnrRLh4c1qBwvGoX'"> Undisclosed <span style="font-weight:bold">Exchange Cold Storage</span></span>
       <span ng-if="address.addrStr == 't1NKwhau5422tnXEP9xSTXKTr36SBBHUepb'"> Undisclosed <span style="font-weight:bold">Exchange Cold Storage</span></span>
       <span ng-if="address.addrStr == 't1Lmk5jHzQuayiumuJE9En6NkCoU4u7eaFe'"> Undisclosed <span style="font-weight:bold">Exchange Operational</span></span>
       <span ng-if="address.addrStr == 't1eYti5M6u8w5NYecmq9rh7Tbv6MSq5WAJs'"> Undisclosed <span style="font-weight:bold">Exchange</span></span>
@@ -19,7 +22,7 @@
       <span ng-if="address.addrStr == 't1V5Q7xStBbBmx87UzzA4tM1mZVwAVCQAta'"> Undisclosed <span style="font-weight:bold">Exchange</span></span>
       <span ng-if="address.addrStr == 't1Yt7FyFCdDr8ZjnyMUeNpGY4bUxKZ24wUM'"> Undisclosed <span style="font-weight:bold">Exchange</span></span>
       <span ng-if="address.addrStr == 't1YdZ9ZHAKiJfaMq2Cnm6y1nHq7gs5sMXSM'"> Undisclosed <span style="font-weight:bold">Whale</span></span>
-      <span ng-if="address.addrStr == 't1h69LNQGYhEzuFaxxitpAB5pZKDEwZRkXH'"> Undisclosed <span style="font-weight:bold">Whale</span></span>
+      <span ng-if="address.addrStr == 't1h69LNQGYhEzuFaxxitpAB5pZKDEwZRkXH'"> Undisclosed <span style="font-weight:bold">Whale</span></span> -->
       </div>
       <div class="col-md-4">
         <span class="txvalues txvalues-primary"><strong translate>Final Balance</strong> {{$root.currency.getConvertion(address.balance) || address.balance + ' FLUX' }}</span>
@@ -43,11 +46,14 @@
       <span class="btn-copy" ngclipboard data-clipboard-text="{{address.addrStr}}"><img class="clippy" width="13" src="../img/clippy.svg" alt="Copy to clipboard"></span>
       <span ng-if="address.addrStr == 't3c51GjrkUg7pUiS8bzNdTnW2hD25egWUih'"> Flux Foundation <span style="font-weight:bold">Locked</span></span>
 			<span ng-if="address.addrStr == 't1XWTigDqS5Dy9McwQc752ShtZV1ffTMJB3'"> Flux Foundation <span style="font-weight:bold">Operational</span></span>
+      <span ng-if="address.addrStr == 't1eabPBaLCqNgttQMnAoohPaQM6u2vFwTNJ'"> Flux Foundation <span style="font-weight:bold">Operational</span></span>
+      <span ng-if="address.addrStr == 't1abAp9oZenibGLFuZKyUjmL6FiATTaCYaj'"> Flux Swap Pool <span style="font-weight:bold">Hot</span></span>
+      <span ng-if="address.addrStr == 't1cjcLaDHkNcuXh6uoyNL7u1jx7GxvzfYAN'"> Flux Swap Pool <span style="font-weight:bold">Cold</span></span>
 			<span ng-if="address.addrStr == 't1gZgxSEr9RcMBcUyHvkN1U2bJsz3CEV2Ve'"> Flux Foundation <span style="font-weight:bold">Mining</span></span>
       <span ng-if="address.addrStr == 't3XjYMBvwxnXVv9jqg4CgokZ3f7kAoXPQL8'"> Flux Foundation <span style="font-weight:bold">Locked</span></span>
       <span ng-if="address.addrStr == 't3PMbbA5YBMrjSD3dD16SSdXKuKovwmj6tS'"> Flux Listings <span style="font-weight:bold">Locked</span></span>
       <span ng-if="address.addrStr == 't3ThbWogDoAjGuS6DEnmN1GWJBRbVjSUK4T'"> Flux Swap Pool <span style="font-weight:bold">Locked</span></span>
-      <span ng-if="address.addrStr == 't1NHmfB1xN74LsFHe12DnrRLh4c1qBwvGoX'"> Undisclosed <span style="font-weight:bold">Exchange Cold Storage</span></span>
+      <!-- <span ng-if="address.addrStr == 't1NHmfB1xN74LsFHe12DnrRLh4c1qBwvGoX'"> Undisclosed <span style="font-weight:bold">Exchange Cold Storage</span></span>
       <span ng-if="address.addrStr == 't1NKwhau5422tnXEP9xSTXKTr36SBBHUepb'"> Undisclosed <span style="font-weight:bold">Exchange Cold Storage</span></span>
       <span ng-if="address.addrStr == 't1Lmk5jHzQuayiumuJE9En6NkCoU4u7eaFe'"> Undisclosed <span style="font-weight:bold">Exchange Operational</span></span>
       <span ng-if="address.addrStr == 't1eYti5M6u8w5NYecmq9rh7Tbv6MSq5WAJs'"> Undisclosed <span style="font-weight:bold">Exchange</span></span>
@@ -55,7 +61,7 @@
       <span ng-if="address.addrStr == 't1V5Q7xStBbBmx87UzzA4tM1mZVwAVCQAta'"> Undisclosed <span style="font-weight:bold">Exchange</span></span>
       <span ng-if="address.addrStr == 't1Yt7FyFCdDr8ZjnyMUeNpGY4bUxKZ24wUM'"> Undisclosed <span style="font-weight:bold">Exchange</span></span>
       <span ng-if="address.addrStr == 't1YdZ9ZHAKiJfaMq2Cnm6y1nHq7gs5sMXSM'"> Undisclosed <span style="font-weight:bold">Whale</span></span>
-      <span ng-if="address.addrStr == 't1h69LNQGYhEzuFaxxitpAB5pZKDEwZRkXH'"> Undisclosed <span style="font-weight:bold">Whale</span></span>
+      <span ng-if="address.addrStr == 't1h69LNQGYhEzuFaxxitpAB5pZKDEwZRkXH'"> Undisclosed <span style="font-weight:bold">Whale</span></span> -->
     </div>
     <h2 translate>Summary <small>confirmed</small></h2>
     <div class="row" data-ng-hide="!address.addrStr">
