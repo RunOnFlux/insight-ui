@@ -1,7 +1,7 @@
 {
   "name": "insight-ui",
   "description": "An open-source frontend for the Insight API. The Insight API provides you with a convenient, powerful and simple way to query and broadcast data on the flux network and build your own services with it.",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "repository": "git://github.com/runonflux/insight-ui.git",
   "contributors": [
     {

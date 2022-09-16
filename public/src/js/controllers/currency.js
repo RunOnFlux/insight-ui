@@ -44,11 +44,17 @@ angular.module('insight.currency').controller('CurrencyController',
           response = value;
         }
         // prevent sci notation
-        if (response < 1e-7) response=response.toFixed(8);
+        if (response < 1e-6) response=response.toFixed(8);
 		
 		if (resSymbol === 'USD') {
+      if (value < 1e-6) {
+        return '$0' + ' ' + resSymbol;
+      }
 			return '$' + numeral(response).format('0,0.[00]') + ' ' + resSymbol;
 		} else if (resSymbol === 'FLUX'){
+      if (value < 1e-6) {
+        return response + ' ' + resSymbol;
+      }
 			return numeral(response).format('0,0.00000000') + ' ' + resSymbol;
 		} else {
 			return response + ' ' + resSymbol;
