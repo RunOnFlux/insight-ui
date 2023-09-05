@@ -20,7 +20,7 @@
     </div>
   </div>
 </div>
-<div class="row line-mid" data-ng-if="tx.version != 5">
+<div class="row line-mid" data-ng-if="tx.version != 5 && tx.version != 6">
   <div class="col-md-12">
     <div class="row" data-ng-if="!tx.bindingSig && (!tx.vjoinsplit || tx.vjoinsplit.length==0)">
       <div class="col-md-12 transaction-vin-vout">
@@ -213,7 +213,7 @@
     </div>
   </div>
 </div>
-<div class="row" data-ng-if="tx.version != 5">
+<div class="row" data-ng-if="tx.version != 5 && tx.version != 6">
   <div class="col-md-6">
     <div class="hidden-xs hidden-sm text-center">
       <span class="lead glyphicon glyphicon-chevron-up text-muted"></span>
@@ -225,7 +225,7 @@
     </div>
   </div>
 </div>
-<div class="row line-mid" data-ng-if="tx.version != 5">
+<div class="row line-mid" data-ng-if="tx.version != 5 && tx.version != 6">
   <div class="col-md-5">
     <div class="row" data-ng-if="tx.vin.length == 0">
       <div class="col-md-12 transaction-vin-vout">
@@ -468,7 +468,7 @@
   </div>
 </div>
 
-<div class="row" data-ng-if="tx.version == 5">
+<div class="row" data-ng-if="tx.version == 5 || tx.version == 6">
   <table class="table" style="table-layout: fixed">
     <tbody>
       <tr data-ng-show="tx.type">
@@ -491,13 +491,21 @@
           <time>{{tx.sigTime * 1000 | date:'medium'}}</time>
         </td>
       </tr>
-      <tr data-ng-show="tx.collateralPubKey" data-ng-if="tx.nType == 2">
+      <tr data-ng-show="tx.collateralPubKey" data-ng-if="tx.nType == 2 && tx.version == 5">
+        <td><strong translate>Collateral Public Key</strong></td>
+        <td class="text-muted text-right">{{tx.collateralPubKey}}</td>
+      </tr>
+      <tr data-ng-show="tx.collateralPubKey" data-ng-if="tx.version == 6 && tx.nFluxNodeTxVersion == 1 && tx.nType == 2">
         <td><strong translate>Collateral Public Key</strong></td>
         <td class="text-muted text-right">{{tx.collateralPubKey}}</td>
       </tr>
       <tr data-ng-show="tx.zelnodePubKey" data-ng-if="tx.nType == 2">
         <td><strong translate>Flux Node Public Key</strong></td>
         <td class="text-muted text-right">{{tx.zelnodePubKey}}</td>
+      </tr>
+      <tr data-ng-show="tx.RedeemScript" data-ng-if="tx.version == 6 && tx.nFluxNodeTxVersion == 2">
+        <td><strong translate>RedeemScript</strong></td>
+        <td class="text-muted text-right">{{tx.RedeemScript}}</td>
       </tr>
       <tr data-ng-show="tx.ip" data-ng-if="tx.nType == 4">
         <td><strong translate>Flux Node Network</strong></td>
@@ -533,7 +541,7 @@
 
 <div class="line-top row" data-ng-hide="!tx">
   <div class="col-xs-6 col-sm-4 col-md-4">
-    <span data-ng-show="!tx.isCoinBase && !isNaN(parseFloat(tx.fees)) && tx.version != 5"
+    <span data-ng-show="!tx.isCoinBase && !isNaN(parseFloat(tx.fees)) && tx.version != 5 && tx.version != 6"
       class="txvalues txvalues-default"><span translate>Fee</span>:
       {{$root.currency.getConvertion(tx.fees) || tx.fees + 'FLUX'}} </span>
   </div>
@@ -541,7 +549,7 @@
     <span data-ng-show="tx.confirmations" class="txvalues
       txvalues-success">{{tx.confirmations}} <span translate>Confirmations</span></span>
     <span data-ng-show="!tx.confirmations" class="txvalues txvalues-danger" translate>Unconfirmed Transaction!</span>
-    <span data-ng-show="tx.version != 5"
+    <span data-ng-show="tx.version != 5 && tx.version != 6"
       class="txvalues txvalues-primary">{{$root.currency.getConvertion(tx.valueOut) || tx.valueOut + ' FLUX' }}</span>
   </div>
 </div>
