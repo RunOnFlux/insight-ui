@@ -1,0 +1,773 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: id_ID\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.4.1\n"
+
+#: public/views/transaction/tx.html
+msgid "(Input unconfirmed)"
+msgstr "(Input belum dikonfirmasi)"
+
+#: public/views/rich_list.html
+msgid "(the top 200 richest addresses)"
+msgstr "(200 alamat terkaya paling teratas)"
+
+#: public/views/network.html
+msgid "{{p.uptime.Days}} days"
+msgstr "{{p.uptime.Days}} hari"
+
+#: public/views/network.html
+msgid "{{p.uptime.Hours}} hrs"
+msgstr "{{p.uptime.Hours}} jam"
+
+#: public/views/network.html
+msgid "{{p.uptime.Minutes}} mins"
+msgstr "{{p.uptime.Minutes}} menit"
+
+#: public/views/network.html
+msgid "{{p.uptime.Seconds}} secs"
+msgstr "{{p.uptime.Seconds}} detik"
+
+#: public/views/pools.html
+msgid "# of Blocks Found"
+msgstr "# dari blok yang ditemukan"
+
+#: public/views/rich_list.html
+msgid "% Addresses"
+msgstr "% Alamat-alamat"
+
+#: public/views/rich_list.html
+msgid "% coins"
+msgstr "% Koin"
+
+#: public/views/pools.html
+msgid "% of Total Blocks"
+msgstr "% dari Jumlah blok"
+
+#: public/views/rich_list.html
+msgid "$USD"
+msgstr "$USD"
+
+#: public/views/404.html
+msgid "404 Page not found :("
+msgstr "404 halaman tidak ditemukan :("
+
+#: public/views/dummy-translations.html
+msgid ""
+"A relative measure of how difficult it is to find a new block. The difficulty is "
+"adjusted periodically as a function of how much hashing power has been deployed "
+"by the network of miners."
+msgstr ""
+"Ukuran relatif dari kesulitan menemukan blok baru.kesulitan disesuaikan secara "
+"berkala berdasarkan kekuatan hashdikerahkan oleh jaringan penambang."
+
+#: public/views/address.html public/views/messages_verify.html
+#: public/views/network.html public/views/rich_list.html
+msgid "Address"
+msgstr "Alamat"
+
+#: public/views/rich_list.html
+msgid "Addresses"
+msgstr "Alamat-alamat"
+
+#: public/views/rich_list.html
+msgid "Addresses richer than:"
+msgstr "Alamat lebih kaya dari:"
+
+#: public/views/index.html
+msgid "Age"
+msgstr "Usia"
+
+#: public/views/messages_verify.html
+msgid "An error occured in the verification process."
+msgstr "Terjadi kesalahan pada proses verifikasi."
+
+#: public/views/transaction_sendraw.html
+msgid "An error occured:<br>{{error}}"
+msgstr "Sebuah kesalahan telah terjadi:<br>{{error}}"
+
+#: public/views/status.html
+msgid "Application Status"
+msgstr "Status Aplikasi"
+
+#: public/views/index.html
+msgid "are very much appreciated: RD7yadeCvSDs4fCbEPuHstU3GHbiS7ao9q"
+msgstr "sangat dihargai: RD7yadeCvSDs4fCbEPuHstU3GHbiS7ao9q"
+
+#: public/views/rich_list.html
+msgid "Balance"
+msgstr "Saldo"
+
+#: public/views/block.html
+msgid "Block"
+msgstr "Blok"
+
+#: public/views/block.html
+msgid "Block Reward"
+msgstr "Hadiah Blok"
+
+#: public/views/statistics.html
+msgid "Block Share last 24 hours:"
+msgstr "Berbagi Blok dari 24 jam terakhir:"
+
+#: public/views/statistics.html
+msgid "Block Share last hour:"
+msgstr "Berbagi Blok beberapa jam yang lalu:"
+
+#: public/views/statistics.html
+msgid "Block Summary"
+msgstr "Ringkasan Blok"
+
+#: public/views/block_list.html public/views/dummy-translations.html
+#: public/views/status.html
+msgid "Blocks"
+msgstr "Blok"
+
+#: public/views/rich_list.html
+msgid "Blocks Mined"
+msgstr "Blok Ditambang"
+
+#: public/views/statistics.html
+msgid "Blocks Mined:"
+msgstr "Blok Ditambang:"
+
+#: public/views/transaction_sendraw.html
+msgid "Broadcast Raw Transaction"
+msgstr "Menyiarkan transaksi yang mentah"
+
+#: public/index.html
+msgid "broadcast transaction"
+msgstr "menyiarkan suatu transaksi"
+
+#: public/views/block_list.html
+msgid "by date."
+msgstr "dari tanggal."
+
+#: public/views/includes/connection.html
+msgid "Can't connect to insight server. Attempting to reconnect..."
+msgstr ""
+"Tidak dapat terhubung ke server Insight. Mencoba untuk tersambung kembali..."
+
+#: public/views/includes/connection.html
+msgid "Can't connect to internet. Please, check your connection."
+msgstr "Tidak dapat terhubung ke Internet. Silakan periksa koneksi."
+
+#: public/views/includes/connection.html
+msgid ""
+"Can't connect to bitcoind to get live updates from the p2p network. (Tried "
+"connecting to bitcoind at {{host}}:{{port}} and failed.)"
+msgstr ""
+"Tidak dapat terhubung ke bitcoind untuk mendapatkan pembaruan langsung dari "
+"jaringan p2p. (Mencoba menghubungkan ke bitcoind di {{host}}:{{port}} dan gagal.)"
+
+#: public/views/rich_list.html
+msgid "Coins"
+msgstr "Koin"
+
+#: public/views/status.html
+msgid "Complete"
+msgstr "Selesai"
+
+#: public/views/transaction.html public/views/transaction/tx.html
+msgid "Confirmations"
+msgstr "Konfirmasi"
+
+#: public/views/includes/header.html
+msgid "Conn"
+msgstr "Conn"
+
+#: public/views/network.html
+msgid "Connected Nodes:"
+msgstr "Nodes Terhubung:"
+
+#: public/views/network.html
+msgid "Connection Duration"
+msgstr "Durasi koneksi"
+
+#: public/views/status.html
+msgid "Connections to other nodes"
+msgstr "Koneksi ke node lain"
+
+#: public/views/status.html
+msgid "Current Blockchain Tip (bitcore)"
+msgstr "Tip Blockchain Saat Ini (bitcore)"
+
+#: public/views/statistics.html
+msgid "Current Network Hashrate"
+msgstr "Hashrate Jaringan Saat ini"
+
+#: public/views/status.html
+msgid "Current Sync Status"
+msgstr "Status sinkronisasi saat ini"
+
+#: public/views/transaction.html
+msgid "Details"
+msgstr "Detail"
+
+#: public/views/block.html public/views/statistics.html
+msgid "Difficulty"
+msgstr "Kesulitan"
+
+#: public/views/statistics.html
+msgid "Difficulty and Network Hashrate"
+msgstr "Kesulitan dan Jaringan Hashrate"
+
+#: public/views/rich_list.html
+msgid "Distribution Details:"
+msgstr "Detail Distribusi:"
+
+#: public/views/index.html
+msgid "Donations"
+msgstr "Donasi"
+
+#: public/views/transaction/tx.html
+msgid "Double spent attempt detected. From tx:"
+msgstr "Upaya pembelanjaan ganda terdeteksi. Dari tx:"
+
+#: public/views/pools.html
+msgid "Effective Hashrate"
+msgstr "Hashrate Efektif"
+
+#: public/views/messages_verify.html
+msgid "Error message:"
+msgstr "Peringatan Kesalahan:"
+
+#: public/views/includes/connection.html
+msgid "Error!"
+msgstr "Kesalahan!"
+
+#: public/views/transaction/tx.html
+msgid "Fee"
+msgstr "Biaya"
+
+#: public/views/transaction.html
+msgid "Fee Rate"
+msgstr "Tarif Biaya"
+
+#: public/views/address.html
+msgid "Final Balance"
+msgstr "Saldo Akhir"
+
+#: public/views/status.html
+msgid "Finish Date"
+msgstr "Tanggal Selesai"
+
+#: public/views/transaction/tx.html
+msgid "first seen at"
+msgstr "pertama kali terlihat pada"
+
+#: public/views/404.html
+msgid "Go to home"
+msgstr "Buka halaman beranda"
+
+#: public/views/block.html public/views/block_list.html public/views/index.html
+#: public/views/includes/header.html
+msgid "Height"
+msgstr "Tinggi"
+
+#: public/views/index.html
+msgid "here"
+msgstr "disini"
+
+#: public/views/transaction.html public/views/transaction/tx.html
+msgid "Included in Block"
+msgstr "Termasuk dalam blok"
+
+#: public/views/transaction/tx.html
+msgid "Incoherence in levelDB detected:"
+msgstr "Inkonsistensi dalam levelDB terdeteksi:"
+
+#: public/views/status.html
+msgid "Info Errors"
+msgstr "Informasi Kesalahan"
+
+#: public/views/status.html
+msgid "Initial Block Chain Height"
+msgstr "Inisial dari Tinggi Block Chain"
+
+#: public/views/transaction.html
+msgid "Input"
+msgstr "Input"
+
+#: public/views/index.html
+msgid "is still in development, check out the source code"
+msgstr "ini masih dalam tahap pengembangan, lihat sumber kodenya"
+
+#: public/views/status.html
+msgid "Last Block"
+msgstr "Blok Terakhir"
+
+#: public/views/status.html
+msgid "Last Block Hash (bitcoind)"
+msgstr "Hash Blok Terakhir (bitcoind)"
+
+#: public/views/block_list.html
+msgid "Lastest block from date"
+msgstr "Blok terbaru dari tanggal"
+
+#: public/views/index.html
+msgid "Latest Blocks"
+msgstr "Blok Terbaru"
+
+#: public/views/index.html
+msgid "Latest Transactions"
+msgstr "Transaksi Terbaru"
+
+#: public/views/statistics.html
+msgid "Live"
+msgstr "Langsung"
+
+#: public/views/address.html
+msgid "Loading Address Information"
+msgstr "Memuat Informasi Alamat"
+
+#: public/views/block.html
+msgid "Loading Block Information"
+msgstr "Memuat Informasi Blok"
+
+#: public/views/block_list.html
+msgid "Loading Selected Date..."
+msgstr "Memuat Tanggal yang Dipilih..."
+
+#: public/views/transaction.html
+msgid "Loading Transaction Details"
+msgstr "Memuat Detail Transaksi"
+
+#: public/views/transaction/list.html
+msgid "Loading Transactions..."
+msgstr "Memuat Transaksi..."
+
+#: public/views/messages_verify.html public/views/transaction_sendraw.html
+#: public/views/includes/infoStatus.html
+msgid "Loading..."
+msgstr "Memuat..."
+
+#: public/views/statistics.html
+msgid "Market Cap:"
+msgstr "Kapitalisasi Pasar:"
+
+#: public/views/statistics.html
+msgid "Market Price (BTC):"
+msgstr "Harga Pasar (BTC):"
+
+#: public/views/statistics.html
+msgid "Market Price:"
+msgstr "Harga pasar:"
+
+#: public/views/statistics.html
+msgid "Market Summary"
+msgstr "Ringkasan Pasar"
+
+#: public/views/messages_verify.html
+msgid "Message"
+msgstr "Pesan"
+
+#: public/views/transaction/tx.html
+msgid "Mined"
+msgstr "Ditambang"
+
+#: public/views/block.html public/views/block_list.html public/views/index.html
+msgid "Mined by"
+msgstr "Ditambang oleh"
+
+#: public/views/block_list.html
+msgid "mined on:"
+msgstr "ditambang pada:"
+
+#: public/views/transaction.html
+msgid "Mined Time"
+msgstr "Waktu Ditambang"
+
+#: public/views/status.html
+msgid "Mining Difficulty"
+msgstr "Kesulitan Penambangan"
+
+#: public/views/statistics.html
+msgid "minutes"
+msgstr "menit"
+
+#: public/views/status.html
+msgid "Network"
+msgstr "Jaringan"
+
+#: public/views/block.html
+msgid "Next Block"
+msgstr "Blok Selanjutnya"
+
+#: public/views/block_list.html
+msgid "No blocks yet."
+msgstr "Belum ada blok"
+
+#: public/views/transaction/tx.html
+msgid "No Inputs (Newly Generated Coins)"
+msgstr "Tanpa Input (Koin yang Baru Dihasilkan)"
+
+#: public/views/includes/search.html
+msgid "No matching records found!"
+msgstr "Tidak ditemukan catatan yang cocok!"
+
+#: public/views/address.html
+msgid "No. Transactions"
+msgstr "No. Transaksi"
+
+#: public/views/status.html
+msgid "Node Information"
+msgstr "Informasi Node"
+
+#: public/views/dummy-translations.html
+msgid "Nodes"
+msgstr "Node"
+
+#: public/views/block.html
+msgid "Number Of Transactions"
+msgstr "Angka Transaksi"
+
+#: public/views/statistics.html
+msgid "Number of Transactions:"
+msgstr "Angka Transaksi:"
+
+#: public/views/block_list.html
+msgid "Older blocks from this date"
+msgstr "Blok lama dari tanggal ini"
+
+#: public/views/transaction.html
+msgid "Output"
+msgstr "Output"
+
+#: public/views/statistics.html
+msgid "Percent of total(blocks found)"
+msgstr "Persen dari total (blok ditemukan)"
+
+#: public/views/pools.html
+msgid "Pool Name"
+msgstr "Nama Pool"
+
+#: public/views/dummy-translations.html
+msgid "Pools"
+msgstr "Pool"
+
+#: public/views/block.html
+msgid "Previous Block"
+msgstr "Blok Sebelumnya"
+
+#: public/views/network.html
+msgid "Protocol"
+msgstr "Protokol"
+
+#: public/views/status.html
+msgid "Protocol version"
+msgstr "Versi Protokol"
+
+#: public/views/status.html
+msgid "Proxy setting"
+msgstr "Pengaturan Proksi"
+
+#: public/views/rich_list.html
+msgid "Rank"
+msgstr "Peringkat"
+
+#: public/views/charts.html
+msgid "Ravencoin Circulation"
+msgstr "Sirkulasi Ravencoin"
+
+#: public/views/messages_verify.html
+msgid "Ravencoin comes with a way of signing arbitrary messages."
+msgstr "Ravencoin adalah tempat untuk menandatangani pesan."
+
+#: public/views/index.html
+msgid "Ravencoin Community"
+msgstr "Komunitas Ravencoin"
+
+#: public/views/rich_list.html
+msgid "Ravencoin Distribution"
+msgstr "Distribusi Ravencoin"
+
+#: public/views/statistics.html
+msgid "Ravencoin Mined:"
+msgstr "Ravencoin Ditambang:"
+
+#: public/views/pools.html
+msgid "Ravencoin Pools"
+msgstr "Ravencoin Pool"
+
+#: public/views/statistics.html
+msgid "Ravencoin Pools Stats"
+msgstr "Statistik Ravencoin Pool"
+
+#: public/views/statistics.html
+msgid "Ravencoin Statistics for the last 24 hours"
+msgstr "Statistik Ravencoin selama 24 jam terakhir"
+
+#: public/views/index.html
+msgid "Ravencore"
+msgstr "Ravencore"
+
+#: public/views/transaction_sendraw.html
+msgid "Raw transaction data"
+msgstr "Data transaksi mentah"
+
+#: public/views/transaction_sendraw.html
+msgid "Raw transaction data must be a valid hexadecimal string."
+msgstr "Data transaksi mentah harus berupa string heksadesimal yang valid."
+
+#: public/views/transaction.html
+msgid "Received Time"
+msgstr "Waktu yang Diterima"
+
+#: public/views/redirect.html
+msgid "Redirecting..."
+msgstr "Pengalihan..."
+
+#: public/views/rich_list.html
+msgid "Rich List"
+msgstr "Daftar kaya"
+
+#: public/views/includes/search.html
+msgid "Search for block, transaction or address"
+msgstr "Cari blok, transaksi atau alamat"
+
+#: public/views/index.html
+msgid "See all blocks"
+msgstr "Lihat semua blok"
+
+#: public/views/transaction_sendraw.html
+msgid "Send transaction"
+msgstr "Kirim transaksi"
+
+#: public/views/transaction/tx.html
+msgid "Show all"
+msgstr "Lihat semua"
+
+#: public/views/transaction/tx.html
+msgid "Show input"
+msgstr "Lihat input"
+
+#: public/views/transaction/tx.html
+msgid "Show less"
+msgstr "Lihat lebih sedikit"
+
+#: public/views/transaction/tx.html
+msgid "Show more"
+msgstr "Lihat lebih banyak"
+
+#: public/views/messages_verify.html
+msgid "Signature"
+msgstr "Signature"
+
+#: public/views/block_list.html public/views/index.html
+#: public/views/transaction.html
+msgid "Size"
+msgstr "Ukuran"
+
+#: public/views/block.html
+msgid "Size (bytes)"
+msgstr "Ukuran (bytes)"
+
+#: public/views/status.html
+msgid "Skipped Blocks (previously synced)"
+msgstr "Blok yang Dilewati (sebelumnya disinkronkan)"
+
+#: public/views/status.html
+msgid "Start Date"
+msgstr "Start Date"
+
+#: public/views/dummy-translations.html
+msgid "Statistics"
+msgstr "Statistik"
+
+#: public/views/dummy-translations.html
+msgid "Status"
+msgstr "État"
+
+#: public/views/block.html public/views/transaction.html
+msgid "Summary"
+msgstr "Ringkasan"
+
+#: public/views/address.html
+msgid "Summary <small>confirmed</small>"
+msgstr "Ringkasan <small>dikonfirmasi</small>"
+
+#: public/views/status.html
+msgid "Sync Progress"
+msgstr "Kemajuan Sinkronisasi"
+
+#: public/views/status.html
+msgid "Sync Status"
+msgstr "Status Sinkronisasi"
+
+#: public/views/status.html
+msgid "Sync Type"
+msgstr "Jenis Sinkronisasi"
+
+#: public/views/status.html
+msgid "Synced Blocks"
+msgstr "Blok yang Disinkronkan"
+
+#: public/views/charts.html
+msgid "The current supply of Ravencoin on the network."
+msgstr "Pasokan Ravencoin saat ini di jaringan."
+
+#: public/views/dummy-translations.html
+msgid "The daily average of fees paid to miners per transaction."
+msgstr "Rata-rata harian biaya yang dibayarkan kepada penambang per transaksi."
+
+#: public/views/messages_verify.html
+msgid "The message failed to verify."
+msgstr "Pesan gagal diverifikasi."
+
+#: public/views/messages_verify.html
+msgid "The message is verifiably from {{verification.address}}."
+msgstr "Pesan tersebut dapat diverifikasi dari {{verification.address}}."
+
+#: public/views/dummy-translations.html
+msgid "The number of daily confirmed FLUX transactions."
+msgstr "Jumlah transaksi FLUX yang dikonfirmasi setiap hari."
+
+#: public/views/dummy-translations.html
+msgid ""
+"The total value of all transaction outputs per day (includes coins returned to "
+"the sender as change)."
+msgstr ""
+"Nilai total seluruh keluaran transaksi per hari (termasuk koin yang dikembalikan "
+"ke pengirim sebagai uang kembalian)."
+
+#: public/views/transaction/list.html
+msgid "There are no transactions involving this address."
+msgstr "Tidak ada transaksi yang melibatkan alamat ini."
+
+#: public/views/transaction_sendraw.html
+msgid ""
+"This form can be used to broadcast a raw transaction in hex format over\n"
+"        the Ravencoin network."
+msgstr ""
+"Formulir ini dapat digunakan untuk menyiarkan transaksi mentah dalam format hex\n"
+"        jaringan Ravencoin."
+
+#: public/views/messages_verify.html
+msgid ""
+"This form can be used to verify that a message comes from\n"
+"        a specific Ravencoin address."
+msgstr ""
+"Formulir ini dapat digunakan untuk memverifikasi asal pesan\n"
+"        alamat Ravencoin tertentu."
+
+#: public/views/statistics.html
+msgid "Time Between Blocks:"
+msgstr "Waktu Diantara Blok:"
+
+#: public/views/status.html
+msgid "Time Offset"
+msgstr "Waktu Offset"
+
+#: public/views/block.html public/views/block_list.html
+msgid "Timestamp"
+msgstr "Stempel Waktu"
+
+#: public/views/block_list.html
+msgid "Today"
+msgstr "Hari ini"
+
+#: public/views/statistics.html
+msgid "Total Circulating Supply:"
+msgstr "Total Pasokan Beredar:"
+
+#: public/views/statistics.html
+msgid "Total Output Volume:"
+msgstr "Total Volume Output:"
+
+#: public/views/address.html
+msgid "Total Received"
+msgstr "Total Diterima"
+
+#: public/views/address.html
+msgid "Total Sent"
+msgstr "Total Terkirim"
+
+#: public/views/statistics.html
+msgid "Total Transaction Fees:"
+msgstr "Total Biaya Transaksi:"
+
+#: public/views/statistics.html
+msgid "Trade Volume:"
+msgstr "Volume Perdagangan:"
+
+#: public/views/transaction.html
+msgid "Transaction"
+msgstr "Transaksi"
+
+#: public/views/transaction_sendraw.html
+msgid "Transaction succesfully broadcast.<br>Transaction id: {{txid}}"
+msgstr "Transaksi berhasil disiarkan.<br>Id transaksi: {{txid}}"
+
+#: public/views/statistics.html
+msgid "Transaction Summary"
+msgstr "Ringkasan Transaksi"
+
+#: public/views/address.html public/views/block.html public/views/block_list.html
+#: public/views/index.html
+msgid "Transactions"
+msgstr "Transaksi"
+
+#: public/views/transaction/tx.html
+msgid "Type"
+msgstr "Jenis"
+
+#: public/views/address.html
+msgid "Unconfirmed"
+msgstr "Belum dikonfirmasi"
+
+#: public/views/transaction.html public/views/transaction/tx.html
+msgid "Unconfirmed Transaction!"
+msgstr "Transaksi Belum Dikonfirmasi!"
+
+#: public/views/address.html
+msgid "Unconfirmed Txs Balance"
+msgstr "Saldo Txs belum dikonfirmasi"
+
+#: public/views/index.html
+msgid "Value Out"
+msgstr "Nilai Keluar"
+
+#: public/views/messages_verify.html
+msgid "Verify"
+msgstr "Verifikasi"
+
+#: public/index.html
+msgid "verify message"
+msgstr "verifikasi pesan"
+
+#: public/views/messages_verify.html
+msgid "Verify signed message"
+msgstr "Verifikasi pesan yang ditandatangani"
+
+#: public/views/block.html public/views/network.html public/views/status.html
+msgid "Version"
+msgstr "Versi"
+
+#: public/views/statistics.html
+msgid "View Chart"
+msgstr "Lihat Bagan"
+
+#: public/views/block_list.html public/views/index.html
+msgid "Waiting for blocks..."
+msgstr "Menunggu blok..."
+
+#: public/views/network.html
+msgid "Waiting for nodes..."
+msgstr "Menunggu node..."
+
+#: public/views/pools.html
+msgid "Waiting for pools..."
+msgstr "Menunggu Pool..."
+
+#: public/views/index.html
+msgid "Waiting for transactions..."
+msgstr "Menunggu transaksi..."
