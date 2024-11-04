@@ -35,6 +35,9 @@ angular.module('insight.system').controller('FooterController',
     }, {
       name: 'Bahasa Indonesia',
       isoCode: 'id_ID',
+    }, {
+      name: 'Basa Jawa',
+      isoCode: 'jv_ID',
     }];
 
     $scope.setLanguage = function(isoCode) {
