@@ -6865,13 +6865,13 @@ body,html {
 #powered a.twitter {
     width: 25%;
     background-size: 45px;
-    background-image: url(../img/rsz_twitterlogo.png);
+    background-image: url(../img/x_new.png);
 }
 
 #powered a.reddit {
     width: 25%;
     background-size: 45px;
-    background-image: url(../img/rsz_redditlogo.png);
+    background-image: url(../img/reddit_new.png);
 }
 
 #powered a.youtube {
