@@ -112,6 +112,41 @@
             </div>
           </td>
         </tr>
+        <tr data-ng-show="tx.type">
+          <td><strong>FluxNode Type</strong></td>
+          <td class="text-muted text-right">{{tx.type}}</td>
+        </tr>
+        <tr data-ng-show="tx.fluxnodePubKey">
+          <td><strong>FluxNode PubKey</strong></td>
+          <td class="text-muted text-right">
+            <div class="ellipsis">
+                <span class="btn-copy" ngclipboard data-clipboard-text="{{tx.fluxnodePubKey}}"><img class="clippy" width="13" src="../img/clippy.svg" alt="Copy to clipboard"></span>
+                <span>{{tx.fluxnodePubKey}}</span>
+            </div>
+          </td>
+        </tr>
+        <tr data-ng-show="tx.collateralOutputHash">
+          <td><strong>Collateral</strong></td>
+          <td class="text-muted text-right">
+            <a href="tx/{{tx.collateralOutputHash}}">{{tx.collateralOutputHash}}:{{tx.collateralOutputIndex}}</a>
+          </td>
+        </tr>
+        <tr data-ng-show="tx.ip">
+          <td><strong>IP Address</strong></td>
+          <td class="text-muted text-right">{{tx.ip}}</td>
+        </tr>
+        <tr data-ng-show="tx.benchmarkTier">
+          <td><strong>Benchmark Tier</strong></td>
+          <td class="text-muted text-right">{{tx.benchmarkTier}}</td>
+        </tr>
+        <tr data-ng-show="tx.hasDelegates">
+          <td><strong>Has Delegates</strong></td>
+          <td class="text-muted text-right">Yes</td>
+        </tr>
+        <tr data-ng-show="tx.delegateData && tx.delegateData.delegates">
+          <td><strong>Delegate Count</strong></td>
+          <td class="text-muted text-right">{{tx.delegateData.delegates.length}}</td>
+        </tr>
         </tbody>
       </table>
 	  </div>

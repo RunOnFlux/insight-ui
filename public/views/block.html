@@ -131,6 +131,10 @@
             <td class="text-right text-muted">{{block.version}}</td>
           </tr>
           <tr>
+            <td> <strong translate>Block Type</strong></td>
+            <td class="text-right text-muted">{{block.blockType || 'Proof of Work'}}</td>
+          </tr>
+          <tr data-ng-if="!block.isPON">
             <td> <strong>Nonce</strong></td>
             <td class="text-right text-muted">
               <div class="ellipsis">
@@ -139,12 +143,29 @@
               </div>
             </td>
           </tr>
-          <tr>
+          <tr data-ng-if="!block.isPON">
             <td><strong>Solution</strong></td>
             <td class="text-right text-muted">
               <div class="ellipsis">
                 <span class="btn-copy" ngclipboard data-clipboard-text="{{block.solution}}"><img class="clippy" width="13" src="../img/clippy.svg" alt="Copy to clipboard"></span>
                 <span>{{block.solution}}</span>
+              </div>
+            </td>
+          </tr>
+          <tr data-ng-if="block.isPON && block.nodesCollateral">
+            <td><strong>Node Collateral</strong></td>
+            <td class="text-right text-muted">
+              <div class="ellipsis">
+                <a href="tx/{{block.nodesCollateral.hash}}">{{block.nodesCollateral.hash}}:{{block.nodesCollateral.index}}</a>
+              </div>
+            </td>
+          </tr>
+          <tr data-ng-if="block.isPON && block.blockSignature">
+            <td><strong>Block Signature</strong></td>
+            <td class="text-right text-muted">
+              <div class="ellipsis">
+                <span class="btn-copy" ngclipboard data-clipboard-text="{{block.blockSignature}}"><img class="clippy" width="13" src="../img/clippy.svg" alt="Copy to clipboard"></span>
+                <span>{{block.blockSignature.substring(0, 20)}}...</span>
               </div>
             </td>
           </tr>
