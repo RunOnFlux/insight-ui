@@ -585,7 +585,7 @@ msgstr "Statistik"
 
 #: public/views/dummy-translations.html
 msgid "Status"
-msgstr "État"
+msgstr "Status"
 
 #: public/views/block.html public/views/transaction.html
 msgid "Summary"
