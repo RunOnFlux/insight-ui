@@ -1,0 +1,41 @@
+{
+  "name": "flux-insight-ui",
+  "description": "Modern frontend for the Flux Insight explorer, consuming the Insight API",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "repository": "git://github.com/runonflux/insight-ui.git",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "type-check": "tsc -b --noEmit",
+    "lint": "oxlint",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "preview": "vite preview",
+    "deploy": "tsc -b && vite build --outDir ../public --emptyOutDir"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "4.3.3",
+    "@tanstack/react-query": "5.101.4",
+    "dayjs": "1.11.21",
+    "qrcode.react": "4.2.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "react-router-dom": "7.18.2",
+    "socket.io-client": "2.5.0",
+    "tailwindcss": "4.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "24.13.3",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4",
+    "@types/socket.io-client": "1.4.36",
+    "@vitejs/plugin-react": "6.0.5",
+    "oxlint": "1.77.0",
+    "prettier": "3.9.6",
+    "typescript": "6.0.3",
+    "vite": "8.2.0"
+  }
+}
