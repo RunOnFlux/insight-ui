@@ -92,9 +92,18 @@ export function Mempool() {
                 {tx.txid}
               </Link>
               <span className="flex shrink-0 items-center gap-3">
-                <span className="rounded-full bg-flux-500/10 px-2.5 py-1 text-xs font-semibold text-flux-600 tabular-nums dark:text-flux-300">
-                  {convert(tx.valueOut)}
-                </span>
+                {tx.valueOut === 0 ? (
+                  <span
+                    className="rounded-full bg-slate-500/10 px-2.5 py-1 text-xs font-semibold text-slate-500 dark:text-slate-400"
+                    title="FluxNode start/confirmation transaction — no value transfer"
+                  >
+                    FluxNode
+                  </span>
+                ) : (
+                  <span className="rounded-full bg-flux-500/10 px-2.5 py-1 text-xs font-semibold text-flux-600 tabular-nums dark:text-flux-300">
+                    {convert(tx.valueOut)}
+                  </span>
+                )}
                 <time className="w-20 text-right text-xs text-slate-400 tabular-nums">
                   {new Date(tx.seenAt).toLocaleTimeString()}
                 </time>

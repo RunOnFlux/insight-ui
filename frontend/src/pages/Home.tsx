@@ -128,9 +128,18 @@ export function Home() {
                   <Link to={`/tx/${tx.txid}`} className="hash link min-w-0 truncate">
                     {tx.txid}
                   </Link>
-                  <span className="shrink-0 rounded-full bg-flux-500/10 px-2.5 py-1 text-xs font-semibold text-flux-600 tabular-nums dark:text-flux-300">
-                    {convert(tx.valueOut)}
-                  </span>
+                  {tx.valueOut === 0 ? (
+                    <span
+                      className="shrink-0 rounded-full bg-slate-500/10 px-2.5 py-1 text-xs font-semibold text-slate-500 dark:text-slate-400"
+                      title="FluxNode start/confirmation transaction — no value transfer"
+                    >
+                      FluxNode
+                    </span>
+                  ) : (
+                    <span className="shrink-0 rounded-full bg-flux-500/10 px-2.5 py-1 text-xs font-semibold text-flux-600 tabular-nums dark:text-flux-300">
+                      {convert(tx.valueOut)}
+                    </span>
+                  )}
                 </div>
               ))
             )}
