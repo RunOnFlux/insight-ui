@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { api, ApiError } from '../lib/api';
 import { Spinner } from '../components/Feedback';
+import { usePageTitle } from '../hooks/usePageTitle';
 
 type State =
   | { status: 'ready' }
@@ -10,6 +11,7 @@ type State =
   | { status: 'error'; message: string };
 
 export function Broadcast() {
+  usePageTitle('Broadcast transaction');
   const [rawtx, setRawtx] = useState('');
   const [state, setState] = useState<State>({ status: 'ready' });
 

@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { api } from '../lib/api';
 import { ErrorPanel, LoadingPanel } from '../components/Feedback';
 import type { PeerInfoEntry } from '../types/api';
+import { usePageTitle } from '../hooks/usePageTitle';
 
 function uptimeString(uptime: PeerInfoEntry['uptime']): string {
   if (!uptime) return '—';
@@ -14,6 +15,7 @@ function uptimeString(uptime: PeerInfoEntry['uptime']): string {
 }
 
 export function Network() {
+  usePageTitle('Connected nodes');
   const { data, error, isPending } = useQuery({
     queryKey: ['peer-info'],
     queryFn: api.peerInfo,

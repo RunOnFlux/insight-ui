@@ -3,6 +3,7 @@ import { formatFlux, formatHashrate, formatInt, formatNumber } from '../lib/form
 import { DaysSelector, StatChartCard, STAT_META } from '../components/StatChartCard';
 import type { StatType } from '../components/StatChartCard';
 import { NotFound } from './NotFound';
+import { usePageTitle } from '../hooks/usePageTitle';
 
 /** Legacy route aliases → API stat types. */
 const TYPE_ALIASES: Record<string, StatType> = {
@@ -27,6 +28,7 @@ const FORMATTERS: Record<StatType, (value: number) => string> = {
 export function StatChart() {
   const { type = '', days: daysParam = '60' } = useParams();
   const statType = TYPE_ALIASES[type];
+  usePageTitle(statType ? STAT_META[statType].title : 'Statistics');
   if (!statType) return <NotFound />;
 
   const days: number | 'all' = daysParam === 'all' ? 'all' : Number(daysParam) || 60;

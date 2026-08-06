@@ -1,19 +1,23 @@
 import { useCallback, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { QRCodeSVG } from 'qrcode.react';
 import { api } from '../lib/api';
 import { useSocketRoom } from '../lib/socket';
 import { useCurrency } from '../context/CurrencyContext';
-import { formatInt } from '../lib/format';
+import { formatFluxExact, formatInt } from '../lib/format';
 import { addressLabel } from '../lib/labels';
 import { CopyButton } from '../components/CopyButton';
 import { ErrorPanel, LoadingPanel } from '../components/Feedback';
 import { TxList } from '../components/TxList';
+import { EcosystemPromos } from '../components/EcosystemPromos';
+import { AddressHistory } from '../components/AddressHistory';
+import { usePageTitle } from '../hooks/usePageTitle';
 import type { Tx } from '../types/api';
 
 export function Address() {
   const { addrStr = '' } = useParams();
+  usePageTitle(`Address ${addrStr.slice(0, 12)}…`);
   const { convert } = useCurrency();
   const queryClient = useQueryClient();
   const [liveTxs, setLiveTxs] = useState<Tx[]>([]);
@@ -25,6 +29,11 @@ export function Address() {
   } = useQuery({
     queryKey: ['address', addrStr],
     queryFn: () => api.address(addrStr),
+  });
+  const { data: richList } = useQuery({
+    queryKey: ['rich-list'],
+    queryFn: api.statsRichestAddresses,
+    staleTime: 10 * 60 * 1000,
   });
 
   const onAddressTx = useCallback(
@@ -44,6 +53,7 @@ export function Address() {
   if (error || !address) return <ErrorPanel title="Address not found" detail={addrStr} />;
 
   const label = addressLabel(addrStr);
+  const rankIndex = richList?.findIndex((entry) => entry.address === addrStr) ?? -1;
 
   return (
     <div className="space-y-6">
@@ -54,6 +64,15 @@ export function Address() {
             <span className="ml-2 rounded-full bg-flux-500/10 px-2.5 py-1 text-xs font-semibold text-flux-600 dark:text-flux-300">
               {label}
             </span>
+          ) : null}
+          {rankIndex >= 0 ? (
+            <Link
+              to="/rich-list"
+              className="ml-2 rounded-full bg-amber-500/10 px-2.5 py-1 text-xs font-semibold text-amber-600 hover:bg-amber-500/20 dark:text-amber-400"
+              title="Position in the rich list"
+            >
+              #{rankIndex + 1} richest
+            </Link>
           ) : null}
         </h1>
         <p className="hash mt-1 text-slate-500 dark:text-slate-400">
@@ -67,7 +86,10 @@ export function Address() {
             <p className="text-xs font-semibold tracking-wider text-slate-500 uppercase dark:text-slate-400">
               Balance
             </p>
-            <p className="mt-1 truncate text-lg font-bold tabular-nums">
+            <p
+              className="mt-1 text-lg font-bold break-words tabular-nums"
+              title={formatFluxExact(address.balance)}
+            >
               {convert(address.balance)}
             </p>
           </div>
@@ -75,7 +97,10 @@ export function Address() {
             <p className="text-xs font-semibold tracking-wider text-slate-500 uppercase dark:text-slate-400">
               Total received
             </p>
-            <p className="mt-1 truncate text-lg font-bold tabular-nums">
+            <p
+              className="mt-1 text-lg font-bold break-words tabular-nums"
+              title={formatFluxExact(address.totalReceived)}
+            >
               {convert(address.totalReceived)}
             </p>
           </div>
@@ -83,7 +108,10 @@ export function Address() {
             <p className="text-xs font-semibold tracking-wider text-slate-500 uppercase dark:text-slate-400">
               Total sent
             </p>
-            <p className="mt-1 truncate text-lg font-bold tabular-nums">
+            <p
+              className="mt-1 text-lg font-bold break-words tabular-nums"
+              title={formatFluxExact(address.totalSent)}
+            >
               {convert(address.totalSent)}
             </p>
           </div>
@@ -105,10 +133,14 @@ export function Address() {
         </div>
       </div>
 
+      <AddressHistory addr={addrStr} balance={address.balance} txCount={address.txApperances} />
+
       <section>
         <h2 className="mb-3 text-lg font-semibold">Transactions</h2>
         <TxList source={{ address: addrStr }} currentAddr={addrStr} liveTxs={liveTxs} />
       </section>
+
+      <EcosystemPromos variant="band" />
     </div>
   );
 }

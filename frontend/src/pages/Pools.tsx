@@ -6,8 +6,10 @@ import { AddressLink } from '../components/AddressLink';
 import { ErrorPanel, LoadingPanel } from '../components/Feedback';
 import { PoolShareBars } from '../components/PoolShareBars';
 import { ChevronLeftIcon, ChevronRightIcon } from '../components/icons';
+import { usePageTitle } from '../hooks/usePageTitle';
 
 export function Pools() {
+  usePageTitle('Mining pools');
   const { date } = useParams();
   const navigate = useNavigate();
 

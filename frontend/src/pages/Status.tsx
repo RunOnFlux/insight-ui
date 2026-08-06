@@ -4,6 +4,7 @@ import { api } from '../lib/api';
 import { formatInt, formatNumber } from '../lib/format';
 import { ErrorPanel, LoadingPanel } from '../components/Feedback';
 import type { ReactNode } from 'react';
+import { usePageTitle } from '../hooks/usePageTitle';
 
 function Row({ label, children }: { label: string; children: ReactNode }) {
   return (
@@ -15,6 +16,7 @@ function Row({ label, children }: { label: string; children: ReactNode }) {
 }
 
 export function Status() {
+  usePageTitle('Node status');
   const sync = useQuery({ queryKey: ['sync'], queryFn: api.sync, refetchInterval: 10_000 });
   const info = useQuery({ queryKey: ['info'], queryFn: api.info });
   const tips = useQuery({ queryKey: ['last-block-hash'], queryFn: api.lastBlockHash });

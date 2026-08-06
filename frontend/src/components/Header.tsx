@@ -26,7 +26,8 @@ const NAV_ITEMS = [
 ] as const;
 
 const MORE_ITEMS = [
-  { to: '/charts', label: 'Supply Chart' },
+  { to: '/charts', label: 'Charts' },
+  { to: '/mempool', label: 'Live transactions' },
   { to: '/network', label: 'Connections' },
   { to: '/status', label: 'Node Status' },
   { to: '/tx/send', label: 'Broadcast TX' },

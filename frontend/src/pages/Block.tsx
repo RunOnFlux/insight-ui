@@ -8,6 +8,7 @@ import { CopyButton } from '../components/CopyButton';
 import { ErrorPanel, LoadingPanel } from '../components/Feedback';
 import { TxList } from '../components/TxList';
 import { ChevronLeftIcon, ChevronRightIcon } from '../components/icons';
+import { usePageTitle } from '../hooks/usePageTitle';
 import type { ReactNode } from 'react';
 
 function Row({ label, children }: { label: string; children: ReactNode }) {
@@ -31,6 +32,7 @@ export function Block() {
     queryKey: ['block', blockHash],
     queryFn: () => api.block(blockHash),
   });
+  usePageTitle(block ? `Block #${block.height}` : 'Block');
 
   if (isPending) return <LoadingPanel label="Loading block…" />;
   if (error || !block) {

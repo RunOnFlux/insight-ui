@@ -2,10 +2,13 @@ import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../lib/api';
-import { formatInt } from '../lib/format';
+import { formatInt, formatNumber } from '../lib/format';
+import { fluxOsUrl, TIER_COLLATERAL } from '../lib/fluxnode';
+import { addressLabel } from '../lib/labels';
 import { AddressLink } from '../components/AddressLink';
 import { ErrorPanel, LoadingPanel } from '../components/Feedback';
-import { SearchIcon } from '../components/icons';
+import { ExternalLinkIcon, SearchIcon } from '../components/icons';
+import { usePageTitle } from '../hooks/usePageTitle';
 
 const PAGE_SIZE = 50;
 const TIERS = ['CUMULUS', 'NIMBUS', 'STRATUS'] as const;
@@ -17,6 +20,7 @@ const TIER_STYLES: Record<string, string> = {
 };
 
 export function FluxNodes() {
+  usePageTitle('FluxNodes');
   const [tierFilter, setTierFilter] = useState<string | null>(null);
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(0);
@@ -33,6 +37,14 @@ export function FluxNodes() {
     const counts: Record<string, number> = {};
     for (const node of nodes) counts[node.tier] = (counts[node.tier] ?? 0) + 1;
     return counts;
+  }, [nodes]);
+
+  const topOperators = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const node of nodes) {
+      counts.set(node.payment_address, (counts.get(node.payment_address) ?? 0) + 1);
+    }
+    return [...counts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 8);
   }, [nodes]);
 
   const filtered = useMemo(() => {
@@ -98,6 +110,63 @@ export function FluxNodes() {
         </div>
       </header>
 
+      <div className="grid gap-4 lg:grid-cols-2">
+        <section className="card p-4">
+          <h2 className="mb-3 text-sm font-semibold">Tier distribution</h2>
+          <div className="space-y-2">
+            {TIERS.map((tier) => {
+              const count = tierCounts[tier] ?? 0;
+              const share = nodes.length > 0 ? (count / nodes.length) * 100 : 0;
+              return (
+                <div
+                  key={tier}
+                  className="grid grid-cols-[6rem_1fr_auto] items-center gap-3 text-sm"
+                >
+                  <span
+                    className={`rounded-full px-2 py-0.5 text-center text-xs font-semibold ${TIER_STYLES[tier]}`}
+                  >
+                    {tier}
+                  </span>
+                  <div className="h-4 overflow-hidden rounded-r bg-slate-100 dark:bg-slate-800">
+                    <div
+                      className="h-full rounded-r bg-flux-500 dark:bg-flux-400"
+                      style={{ width: `${share}%` }}
+                    />
+                  </div>
+                  <span className="w-40 text-right text-xs text-slate-500 tabular-nums dark:text-slate-400">
+                    {formatInt(count)} · {formatNumber(share, 1)}% ·{' '}
+                    {formatInt(TIER_COLLATERAL[tier] ?? 0)} FLUX
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+          <p className="mt-2 text-xs text-slate-400 dark:text-slate-500">
+            Locked collateral:{' '}
+            {formatInt(nodes.reduce((acc, node) => acc + (TIER_COLLATERAL[node.tier] ?? 0), 0))}{' '}
+            FLUX
+          </p>
+        </section>
+
+        <section className="card p-4">
+          <h2 className="mb-3 text-sm font-semibold">Largest operators (by payment address)</h2>
+          <div className="grid grid-cols-1 gap-x-6 gap-y-1.5 sm:grid-cols-2">
+            {topOperators.map(([address, count]) => (
+              <div key={address} className="flex items-center justify-between gap-2 text-sm">
+                <AddressLink
+                  address={address}
+                  shorten={!addressLabel(address)}
+                  className="min-w-0 truncate"
+                />
+                <span className="shrink-0 text-xs text-slate-500 tabular-nums dark:text-slate-400">
+                  {formatInt(count)} nodes
+                </span>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
+
       <div className="flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 focus-within:border-flux-500 dark:border-slate-700 dark:bg-slate-900">
         <SearchIcon className="shrink-0 text-slate-400" width={16} height={16} />
         <input
@@ -141,7 +210,22 @@ export function FluxNodes() {
                     {node.tier}
                   </span>
                 </td>
-                <td className="td-cell font-mono text-xs">{node.ip}</td>
+                <td className="td-cell font-mono text-xs">
+                  {fluxOsUrl(node.ip) ? (
+                    <a
+                      href={fluxOsUrl(node.ip) ?? undefined}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="link inline-flex items-center gap-1"
+                      title="Open this node's FluxOS page"
+                    >
+                      {node.ip}
+                      <ExternalLinkIcon width={10} height={10} />
+                    </a>
+                  ) : (
+                    node.ip
+                  )}
+                </td>
                 <td className="td-cell text-slate-500 dark:text-slate-400">{node.network}</td>
                 <td className="td-cell text-right">
                   <Link to={`/block-index/${node.added_height}`} className="link tabular-nums">

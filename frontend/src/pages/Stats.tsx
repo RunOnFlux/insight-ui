@@ -6,6 +6,7 @@ import { formatHashrate, formatInt, formatNumber, formatUsd } from '../lib/forma
 import { ErrorPanel, LoadingPanel } from '../components/Feedback';
 import { PoolShareBars } from '../components/PoolShareBars';
 import type { ReactNode } from 'react';
+import { usePageTitle } from '../hooks/usePageTitle';
 
 function Row({ label, children, to }: { label: string; children: ReactNode; to?: string }) {
   return (
@@ -25,6 +26,7 @@ function Row({ label, children, to }: { label: string; children: ReactNode; to?:
 }
 
 export function Stats() {
+  usePageTitle('Network statistics');
   const { convert } = useCurrency();
   const total = useQuery({ queryKey: ['stats-total'], queryFn: api.statsTotal });
   const lastHour = useQuery({ queryKey: ['stats-1h'], queryFn: api.statsPoolsLastHour });

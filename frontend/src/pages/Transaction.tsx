@@ -9,6 +9,8 @@ import { CopyButton } from '../components/CopyButton';
 import { ErrorPanel, LoadingPanel } from '../components/Feedback';
 import { TxCard } from '../components/TxCard';
 import { AddressLink } from '../components/AddressLink';
+import { EcosystemPromos } from '../components/EcosystemPromos';
+import { usePageTitle } from '../hooks/usePageTitle';
 import type { ReactNode } from 'react';
 import type { Tx } from '../types/api';
 
@@ -88,6 +90,7 @@ function RawScripts({ tx }: { tx: Tx }) {
 
 export function Transaction() {
   const { txId = '' } = useParams();
+  usePageTitle(`Tx ${txId.slice(0, 12)}…`);
   const { convert } = useCurrency();
 
   const {
@@ -173,6 +176,8 @@ export function Transaction() {
       </div>
 
       {!fluxNodeTx ? <RawScripts tx={tx} /> : null}
+
+      <EcosystemPromos variant="band" />
     </div>
   );
 }

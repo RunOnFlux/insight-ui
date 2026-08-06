@@ -84,10 +84,12 @@ export function StatChartCard({
   type,
   days,
   formatValue,
+  height,
 }: {
   type: StatType;
   days: number | 'all';
   formatValue: (value: number) => string;
+  height?: number;
 }) {
   const meta = STAT_META[type];
   const { data, error, isPending } = useQuery({
@@ -105,7 +107,7 @@ export function StatChartCard({
 
   return (
     <div className="card p-4">
-      <LineChart data={points} formatValue={formatValue} />
+      <LineChart data={points} formatValue={formatValue} height={height} />
     </div>
   );
 }

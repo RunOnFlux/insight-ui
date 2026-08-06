@@ -8,6 +8,7 @@ import type { InvTx } from '../types/api';
 import { formatHashrate, formatInt, formatNumber, formatUsd } from '../lib/format';
 import { BlocksTable } from './../components/BlocksTable';
 import { LoadingPanel } from '../components/Feedback';
+import { EcosystemPromos } from '../components/EcosystemPromos';
 
 const LATEST_BLOCKS = 8;
 const LATEST_TXS = 10;
@@ -28,7 +29,7 @@ function StatCard({
       <p className="text-xs font-semibold tracking-wider text-slate-500 uppercase dark:text-slate-400">
         {label}
       </p>
-      <p className="mt-1 truncate text-xl font-bold tabular-nums">{value}</p>
+      <p className="mt-1 text-xl font-bold break-words tabular-nums">{value}</p>
       {sub ? <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">{sub}</p> : null}
     </>
   );
@@ -114,7 +115,7 @@ export function Home() {
           )}
         </section>
 
-        <section>
+        <section className="space-y-6">
           <h2 className="mb-3 text-lg font-semibold">Latest transactions</h2>
           <div className="card divide-y divide-slate-100 dark:divide-slate-800/70">
             {liveTxs.length === 0 ? (
@@ -134,6 +135,7 @@ export function Home() {
               ))
             )}
           </div>
+          <EcosystemPromos variant="stack" />
         </section>
       </div>
     </div>

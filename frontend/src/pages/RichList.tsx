@@ -3,6 +3,7 @@ import { api } from '../lib/api';
 import { formatFlux, formatInt, formatNumber, formatUsd } from '../lib/format';
 import { AddressLink } from '../components/AddressLink';
 import { ErrorPanel, LoadingPanel } from '../components/Feedback';
+import { usePageTitle } from '../hooks/usePageTitle';
 
 function DistributionTable() {
   const { data: intervals, error } = useQuery({
@@ -105,6 +106,7 @@ function DistributionTable() {
 }
 
 export function RichList() {
+  usePageTitle('Rich list');
   const { data, error, isPending } = useQuery({
     queryKey: ['rich-list'],
     queryFn: api.statsRichestAddresses,

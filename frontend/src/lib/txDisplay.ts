@@ -19,6 +19,23 @@ export function isFluxNodeTx(tx: Tx): boolean {
   return tx.version === 5 || tx.version === 6;
 }
 
+/** Net FLUX change this transaction causes for the given address. */
+export function addressDelta(tx: Tx, addr: string): number {
+  if (isFluxNodeTx(tx)) return 0;
+  let sat = 0;
+  for (const vout of tx.vout) {
+    if (vout.scriptPubKey.addresses?.includes(addr)) {
+      sat += Math.round(parseFloat(vout.value) * COIN);
+    }
+  }
+  for (const vin of tx.vin) {
+    if (vin.addr === addr) {
+      sat -= Math.round((vin.value ?? (vin.valueSat ?? 0) / COIN) * COIN);
+    }
+  }
+  return sat / COIN;
+}
+
 /** Decode the ASCII payload of an OP_RETURN script (stops at a NUL byte). */
 export function decodeOpReturn(asm: string): string | null {
   if (!asm.startsWith('OP_RETURN ')) return null;

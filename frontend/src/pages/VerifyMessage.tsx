@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { api, ApiError } from '../lib/api';
 import { Spinner } from '../components/Feedback';
+import { usePageTitle } from '../hooks/usePageTitle';
 
 type State =
   | { status: 'unverified' }
@@ -9,6 +10,7 @@ type State =
   | { status: 'error'; message: string | null };
 
 export function VerifyMessage() {
+  usePageTitle('Verify message');
   const [address, setAddress] = useState('');
   const [signature, setSignature] = useState('');
   const [message, setMessage] = useState('');

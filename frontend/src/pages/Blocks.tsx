@@ -1,12 +1,41 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../lib/api';
-import { utcDateString } from '../lib/format';
+import { formatBytes, formatInt, formatNumber, utcDateString } from '../lib/format';
+import type { BlockSummary } from '../types/api';
 import { BlocksTable } from '../components/BlocksTable';
 import { ErrorPanel, LoadingPanel } from '../components/Feedback';
 import { ChevronLeftIcon, ChevronRightIcon } from '../components/icons';
+import { usePageTitle } from '../hooks/usePageTitle';
+
+function DayStats({ blocks }: { blocks: BlockSummary[] }) {
+  const times = blocks.map((b) => b.time);
+  const spanSeconds = Math.max(...times) - Math.min(...times);
+  const avgInterval = spanSeconds / (blocks.length - 1);
+  const avgSize = blocks.reduce((acc, b) => acc + b.size, 0) / blocks.length;
+  const totalTxs = blocks.reduce((acc, b) => acc + b.txlength, 0);
+  const stats = [
+    { label: 'Avg block interval', value: `${formatNumber(avgInterval, 1)} s` },
+    { label: 'Avg block size', value: formatBytes(avgSize) },
+    { label: 'Transactions', value: formatInt(totalTxs) },
+    { label: 'Avg txs / block', value: formatNumber(totalTxs / blocks.length, 1) },
+  ];
+  return (
+    <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+      {stats.map((stat) => (
+        <div key={stat.label} className="card p-3">
+          <p className="text-xs font-semibold tracking-wider text-slate-500 uppercase dark:text-slate-400">
+            {stat.label}
+          </p>
+          <p className="mt-0.5 text-lg font-bold tabular-nums">{stat.value}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export function Blocks() {
+  usePageTitle('Blocks');
   const { blockDate, startTimestamp } = useParams();
   const navigate = useNavigate();
 
@@ -62,6 +91,7 @@ export function Blocks() {
 
       {isPending ? <LoadingPanel label="Loading blocks…" /> : null}
       {error ? <ErrorPanel title="Could not load blocks" detail={String(error)} /> : null}
+      {data && data.blocks.length > 1 ? <DayStats blocks={data.blocks} /> : null}
       {data ? (
         <>
           <BlocksTable blocks={data.blocks} emptyLabel="No blocks on this date." />

@@ -15,6 +15,7 @@ import { Charts } from './pages/Charts';
 import { Status } from './pages/Status';
 import { Network } from './pages/Network';
 import { Broadcast } from './pages/Broadcast';
+import { Mempool } from './pages/Mempool';
 import { VerifyMessage } from './pages/VerifyMessage';
 import { NotFound } from './pages/NotFound';
 
@@ -28,6 +29,7 @@ function App() {
         <Route path="blocks-date/:blockDate/:startTimestamp" element={<Blocks />} />
         <Route path="block/:blockHash" element={<Block />} />
         <Route path="block-index/:blockHeight" element={<BlockIndexRedirect />} />
+        <Route path="mempool" element={<Mempool />} />
         <Route path="tx/send" element={<Broadcast />} />
         <Route path="tx/:txId" element={<Transaction />} />
         <Route path="tx/:txId/:vType/:vIndex" element={<Transaction />} />

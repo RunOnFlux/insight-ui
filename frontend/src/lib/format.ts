@@ -15,7 +15,27 @@ const usdFormatter = new Intl.NumberFormat('en-US', {
 
 const intFormatter = new Intl.NumberFormat('en-US');
 
+/**
+ * Fewer decimals as magnitude grows, so large amounts stay short and the
+ * unit is never pushed out of view. Use formatFluxExact for full precision.
+ */
+function adaptiveDecimals(value: number): number {
+  const abs = Math.abs(value);
+  if (abs >= 100_000) return 2;
+  if (abs >= 1_000) return 4;
+  return 8;
+}
+
 export function formatFlux(value: number): string {
+  if (!Number.isFinite(value)) return '—';
+  const formatted = new Intl.NumberFormat('en-US', {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: adaptiveDecimals(value),
+  }).format(value);
+  return `${formatted} FLUX`;
+}
+
+export function formatFluxExact(value: number): string {
   if (!Number.isFinite(value)) return '—';
   return `${fluxFormatter.format(value)} FLUX`;
 }
