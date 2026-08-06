@@ -9,6 +9,7 @@ import { AddressLink } from '../components/AddressLink';
 import { ErrorPanel, LoadingPanel } from '../components/Feedback';
 import { ExternalLinkIcon, SearchIcon } from '../components/icons';
 import { usePageTitle } from '../hooks/usePageTitle';
+import { EcosystemPromos } from '../components/EcosystemPromos';
 
 const PAGE_SIZE = 50;
 const TIERS = ['CUMULUS', 'NIMBUS', 'STRATUS'] as const;
@@ -271,6 +272,8 @@ export function FluxNodes() {
           </button>
         </span>
       </div>
+
+      <EcosystemPromos variant="band" />
     </div>
   );
 }

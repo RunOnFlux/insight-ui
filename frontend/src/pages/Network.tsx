@@ -3,6 +3,7 @@ import { api } from '../lib/api';
 import { ErrorPanel, LoadingPanel } from '../components/Feedback';
 import type { PeerInfoEntry } from '../types/api';
 import { usePageTitle } from '../hooks/usePageTitle';
+import { EcosystemPromos } from '../components/EcosystemPromos';
 
 function uptimeString(uptime: PeerInfoEntry['uptime']): string {
   if (!uptime) return '—';
@@ -55,6 +56,8 @@ export function Network() {
           </tbody>
         </table>
       </div>
+
+      <EcosystemPromos variant="band" />
     </div>
   );
 }

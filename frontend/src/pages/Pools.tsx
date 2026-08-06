@@ -7,6 +7,7 @@ import { ErrorPanel, LoadingPanel } from '../components/Feedback';
 import { PoolShareBars } from '../components/PoolShareBars';
 import { ChevronLeftIcon, ChevronRightIcon } from '../components/icons';
 import { usePageTitle } from '../hooks/usePageTitle';
+import { EcosystemPromos } from '../components/EcosystemPromos';
 
 export function Pools() {
   usePageTitle('Mining pools');
@@ -116,6 +117,8 @@ export function Pools() {
           </tbody>
         </table>
       </div>
+
+      <EcosystemPromos variant="band" />
     </div>
   );
 }

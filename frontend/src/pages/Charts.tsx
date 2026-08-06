@@ -8,6 +8,7 @@ import { LineChart } from '../components/LineChart';
 import { LoadingPanel } from '../components/Feedback';
 import { ChevronRightIcon } from '../components/icons';
 import { usePageTitle } from '../hooks/usePageTitle';
+import { EcosystemPromos } from '../components/EcosystemPromos';
 
 function ExternalChart({
   title,
@@ -118,6 +119,8 @@ export function Charts() {
           ))}
         </div>
       </section>
+
+      <EcosystemPromos variant="band" />
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { formatFlux, formatInt, formatNumber, formatUsd } from '../lib/format';
 import { AddressLink } from '../components/AddressLink';
 import { ErrorPanel, LoadingPanel } from '../components/Feedback';
 import { usePageTitle } from '../hooks/usePageTitle';
+import { EcosystemPromos } from '../components/EcosystemPromos';
 
 function DistributionTable() {
   const { data: intervals, error } = useQuery({
@@ -158,6 +159,8 @@ export function RichList() {
           </div>
         ) : null}
       </section>
+
+      <EcosystemPromos variant="band" />
     </div>
   );
 }

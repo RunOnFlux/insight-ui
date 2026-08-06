@@ -26,7 +26,7 @@ const PROMOS: Promo[] = [
   },
   {
     name: 'SSP Wallet',
-    tagline: 'Secure two-key crypto wallet',
+    tagline: 'Multi-signature wallet for personal & business',
     url: 'https://sspwallet.com',
     logo: sspLogo,
   },

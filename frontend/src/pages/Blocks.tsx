@@ -7,6 +7,7 @@ import { BlocksTable } from '../components/BlocksTable';
 import { ErrorPanel, LoadingPanel } from '../components/Feedback';
 import { ChevronLeftIcon, ChevronRightIcon } from '../components/icons';
 import { usePageTitle } from '../hooks/usePageTitle';
+import { EcosystemPromos } from '../components/EcosystemPromos';
 
 function DayStats({ blocks }: { blocks: BlockSummary[] }) {
   const times = blocks.map((b) => b.time);
@@ -117,6 +118,8 @@ export function Blocks() {
           </div>
         </>
       ) : null}
+
+      <EcosystemPromos variant="band" />
     </div>
   );
 }

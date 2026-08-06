@@ -7,6 +7,7 @@ import { ErrorPanel, LoadingPanel } from '../components/Feedback';
 import { PoolShareBars } from '../components/PoolShareBars';
 import type { ReactNode } from 'react';
 import { usePageTitle } from '../hooks/usePageTitle';
+import { EcosystemPromos } from '../components/EcosystemPromos';
 
 function Row({ label, children, to }: { label: string; children: ReactNode; to?: string }) {
   return (
@@ -149,6 +150,8 @@ export function Stats() {
           <PoolShareBars pools={stats.blocks_by_pool ?? []} totalBlocks={stats.n_blocks_mined} />
         </section>
       </div>
+
+      <EcosystemPromos variant="band" />
     </div>
   );
 }

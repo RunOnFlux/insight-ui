@@ -5,6 +5,7 @@ import { formatInt, formatNumber } from '../lib/format';
 import { ErrorPanel, LoadingPanel } from '../components/Feedback';
 import type { ReactNode } from 'react';
 import { usePageTitle } from '../hooks/usePageTitle';
+import { EcosystemPromos } from '../components/EcosystemPromos';
 
 function Row({ label, children }: { label: string; children: ReactNode }) {
   return (
@@ -110,6 +111,8 @@ export function Status() {
           )}
         </section>
       </div>
+
+      <EcosystemPromos variant="band" />
     </div>
   );
 }

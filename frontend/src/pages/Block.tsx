@@ -10,6 +10,7 @@ import { TxList } from '../components/TxList';
 import { ChevronLeftIcon, ChevronRightIcon } from '../components/icons';
 import { usePageTitle } from '../hooks/usePageTitle';
 import type { ReactNode } from 'react';
+import { EcosystemPromos } from '../components/EcosystemPromos';
 
 function Row({ label, children }: { label: string; children: ReactNode }) {
   return (
@@ -160,6 +161,8 @@ export function Block() {
         </h2>
         <TxList source={{ block: block.hash }} />
       </section>
+
+      <EcosystemPromos variant="band" />
     </div>
   );
 }

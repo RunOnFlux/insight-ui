@@ -2,20 +2,16 @@ import { useMemo } from 'react';
 import dayjs from 'dayjs';
 import { addressDelta } from '../lib/txDisplay';
 import { formatFluxExact, formatInt } from '../lib/format';
+import { buildAddressCsv, CSV_FORMATS } from '../lib/addressCsv';
+import type { AddressHistoryRow, CsvFormat } from '../lib/addressCsv';
 import { HISTORY_CAP_PAGES, useAddressTxHistory } from '../hooks/useAddressTxHistory';
 import { LineChart } from './LineChart';
 import { Spinner } from './Feedback';
 import type { Tx } from '../types/api';
 
-interface HistoryRow {
-  tx: Tx;
-  delta: number;
-  balanceAfter: number;
-}
-
 /** Walk newest→oldest from the known balance to reconstruct exact balances. */
-function buildRows(txs: Tx[], addr: string, currentBalance: number): HistoryRow[] {
-  const rows: HistoryRow[] = [];
+function buildRows(txs: Tx[], addr: string, currentBalance: number): AddressHistoryRow[] {
+  const rows: AddressHistoryRow[] = [];
   let balance = currentBalance;
   for (const tx of txs) {
     const delta = addressDelta(tx, addr);
@@ -25,24 +21,13 @@ function buildRows(txs: Tx[], addr: string, currentBalance: number): HistoryRow[
   return rows;
 }
 
-function downloadCsv(addr: string, rows: HistoryRow[]): void {
-  const header = 'txid,timestamp,block_height,confirmations,amount_flux,balance_after_flux';
-  const lines = rows.map(({ tx, delta, balanceAfter }) => {
-    const ts = tx.time ?? tx.blocktime;
-    return [
-      tx.txid,
-      ts !== undefined ? new Date(ts * 1000).toISOString() : '',
-      tx.blockheight ?? '',
-      tx.confirmations,
-      delta.toFixed(8),
-      balanceAfter.toFixed(8),
-    ].join(',');
-  });
-  const blob = new Blob([`${header}\n${lines.join('\n')}\n`], { type: 'text/csv' });
+function downloadCsv(format: CsvFormat, addr: string, rows: AddressHistoryRow[]): void {
+  const { filename, content } = buildAddressCsv(format, addr, rows);
+  const blob = new Blob([content], { type: 'text/csv' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `flux-${addr}-transactions.csv`;
+  a.download = filename;
   a.click();
   URL.revokeObjectURL(url);
 }
@@ -100,15 +85,23 @@ export function AddressHistory({
               <Spinner /> {formatInt(history.txs.length)} transactions loaded…
             </span>
           ) : null}
-          {history.status === 'done' ? (
-            <button
-              type="button"
-              onClick={() => downloadCsv(addr, rows)}
-              className="cursor-pointer rounded-lg border border-slate-200 px-4 py-2 text-xs font-semibold text-flux-600 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:text-flux-400 dark:hover:bg-slate-800"
-            >
-              Download CSV
-            </button>
-          ) : null}
+          {history.status === 'done'
+            ? CSV_FORMATS.map(({ format, label }) => (
+                <button
+                  key={format}
+                  type="button"
+                  onClick={() => downloadCsv(format, addr, rows)}
+                  title={
+                    format === 'koinly'
+                      ? 'Koinly universal format — import directly at koinly.io'
+                      : 'Full transaction export with running balance'
+                  }
+                  className="cursor-pointer rounded-lg border border-slate-200 px-4 py-2 text-xs font-semibold text-flux-600 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:text-flux-400 dark:hover:bg-slate-800"
+                >
+                  {label}
+                </button>
+              ))
+            : null}
         </div>
       </div>
       {history.status === 'error' ? (

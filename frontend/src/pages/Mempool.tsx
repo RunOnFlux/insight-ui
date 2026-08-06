@@ -6,6 +6,7 @@ import { formatInt, formatNumber } from '../lib/format';
 import { usePageTitle } from '../hooks/usePageTitle';
 import { Spinner } from '../components/Feedback';
 import type { InvTx } from '../types/api';
+import { EcosystemPromos } from '../components/EcosystemPromos';
 
 const MAX_ROWS = 200;
 
@@ -102,6 +103,8 @@ export function Mempool() {
           ))
         )}
       </div>
+
+      <EcosystemPromos variant="band" />
     </div>
   );
 }
