@@ -10,7 +10,7 @@ import { BlocksTable } from './../components/BlocksTable';
 import { LoadingPanel } from '../components/Feedback';
 import { EcosystemPromos } from '../components/EcosystemPromos';
 
-const LATEST_BLOCKS = 8;
+const LATEST_BLOCKS = 10;
 const LATEST_TXS = 10;
 
 function StatCard({
@@ -115,7 +115,7 @@ export function Home() {
           )}
         </section>
 
-        <section className="space-y-6">
+        <section>
           <h2 className="mb-3 text-lg font-semibold">Latest transactions</h2>
           <div className="card divide-y divide-slate-100 dark:divide-slate-800/70">
             {liveTxs.length === 0 ? (
@@ -144,9 +144,10 @@ export function Home() {
               ))
             )}
           </div>
-          <EcosystemPromos variant="stack" />
         </section>
       </div>
+
+      <EcosystemPromos variant="band" />
     </div>
   );
 }
