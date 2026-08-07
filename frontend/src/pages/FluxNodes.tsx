@@ -7,6 +7,7 @@ import { fluxOsUrl, TIER_COLLATERAL } from '../lib/fluxnode';
 import { addressLabel } from '../lib/labels';
 import { AddressLink } from '../components/AddressLink';
 import { ErrorPanel, LoadingPanel } from '../components/Feedback';
+import { FluxNodeStats } from '../components/FluxNodeStats';
 import { ExternalLinkIcon, SearchIcon } from '../components/icons';
 import { usePageTitle } from '../hooks/usePageTitle';
 import { EcosystemPromos } from '../components/EcosystemPromos';
@@ -25,6 +26,7 @@ export function FluxNodes() {
   const [tierFilter, setTierFilter] = useState<string | null>(null);
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(0);
+  const [allOperators, setAllOperators] = useState(false);
 
   const { data, error, isPending } = useQuery({
     queryKey: ['flux-nodes'],
@@ -41,12 +43,31 @@ export function FluxNodes() {
   }, [nodes]);
 
   const topOperators = useMemo(() => {
-    const counts = new Map<string, number>();
+    const byAddress = new Map<
+      string,
+      { total: number; cumulus: number; nimbus: number; stratus: number }
+    >();
     for (const node of nodes) {
-      counts.set(node.payment_address, (counts.get(node.payment_address) ?? 0) + 1);
+      let entry = byAddress.get(node.payment_address);
+      if (!entry) {
+        entry = { total: 0, cumulus: 0, nimbus: 0, stratus: 0 };
+        byAddress.set(node.payment_address, entry);
+      }
+      entry.total += 1;
+      if (node.tier === 'CUMULUS') entry.cumulus += 1;
+      else if (node.tier === 'NIMBUS') entry.nimbus += 1;
+      else if (node.tier === 'STRATUS') entry.stratus += 1;
     }
-    return [...counts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 8);
+    return {
+      list: [...byAddress.entries()].sort((a, b) => b[1].total - a[1].total).slice(0, 50),
+      operatorCount: byAddress.size,
+    };
   }, [nodes]);
+
+  const lockedFlux = useMemo(
+    () => nodes.reduce((acc, node) => acc + (TIER_COLLATERAL[node.tier] ?? 0), 0),
+    [nodes],
+  );
 
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
@@ -142,31 +163,68 @@ export function FluxNodes() {
               );
             })}
           </div>
-          <p className="mt-2 text-xs text-slate-400 dark:text-slate-500">
-            Locked collateral:{' '}
-            {formatInt(nodes.reduce((acc, node) => acc + (TIER_COLLATERAL[node.tier] ?? 0), 0))}{' '}
-            FLUX
-          </p>
         </section>
 
         <section className="card p-4">
-          <h2 className="mb-3 text-sm font-semibold">Largest operators (by payment address)</h2>
-          <div className="grid grid-cols-1 gap-x-6 gap-y-1.5 sm:grid-cols-2">
-            {topOperators.map(([address, count]) => (
-              <div key={address} className="flex items-center justify-between gap-2 text-sm">
-                <AddressLink
-                  address={address}
-                  shorten={!addressLabel(address)}
-                  className="min-w-0 truncate"
-                />
-                <span className="shrink-0 text-xs text-slate-500 tabular-nums dark:text-slate-400">
-                  {formatInt(count)} nodes
-                </span>
-              </div>
-            ))}
+          <div className="mb-3 flex items-center justify-between gap-2">
+            <h2 className="text-sm font-semibold">Largest operators (by payment address)</h2>
+            <span
+              className="hidden text-xs text-slate-400 sm:block dark:text-slate-500"
+              title="CUMULUS / NIMBUS / STRATUS breakdown"
+            >
+              <span className="font-semibold text-sky-500">C</span> ·{' '}
+              <span className="font-semibold text-violet-500">N</span> ·{' '}
+              <span className="font-semibold text-amber-500">S</span>
+            </span>
           </div>
+          <div className="grid grid-cols-1 gap-x-6 gap-y-1.5 sm:grid-cols-2">
+            {(allOperators ? topOperators.list : topOperators.list.slice(0, 12)).map(
+              ([address, counts], i) => (
+                <div key={address} className="flex items-center justify-between gap-2 text-sm">
+                  <span className="flex min-w-0 items-center gap-2">
+                    <span className="w-6 shrink-0 text-right text-xs text-slate-400 tabular-nums">
+                      {i + 1}
+                    </span>
+                    <AddressLink
+                      address={address}
+                      shorten={!addressLabel(address)}
+                      className="min-w-0 truncate"
+                    />
+                  </span>
+                  <span className="flex shrink-0 items-center gap-2 text-xs tabular-nums">
+                    <span className="hidden text-slate-400 sm:inline dark:text-slate-500">
+                      <span className="text-sky-500">{counts.cumulus}</span> ·{' '}
+                      <span className="text-violet-500">{counts.nimbus}</span> ·{' '}
+                      <span className="text-amber-500">{counts.stratus}</span>
+                    </span>
+                    <span className="w-20 text-right font-medium text-slate-600 dark:text-slate-300">
+                      {formatInt(counts.total)} nodes
+                    </span>
+                    <span className="w-12 text-right text-slate-400 dark:text-slate-500">
+                      {nodes.length > 0 ? ((counts.total / nodes.length) * 100).toFixed(1) : '0'}%
+                    </span>
+                  </span>
+                </div>
+              ),
+            )}
+          </div>
+          {topOperators.list.length > 12 ? (
+            <button
+              type="button"
+              onClick={() => setAllOperators((v) => !v)}
+              className="link mt-3 cursor-pointer text-xs font-medium"
+            >
+              {allOperators ? 'Show top 12' : `Show top ${topOperators.list.length} operators`}
+            </button>
+          ) : null}
         </section>
       </div>
+
+      <FluxNodeStats
+        lockedFlux={lockedFlux}
+        lockedNodes={nodes.length}
+        operatorCount={topOperators.operatorCount}
+      />
 
       <div className="flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 focus-within:border-flux-500 dark:border-slate-700 dark:bg-slate-900">
         <SearchIcon className="shrink-0 text-slate-400" width={16} height={16} />
