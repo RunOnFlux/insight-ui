@@ -4,7 +4,6 @@ import { useQuery } from '@tanstack/react-query';
 import { api } from '../lib/api';
 import { formatInt, formatNumber } from '../lib/format';
 import { fluxOsUrl, TIER_COLLATERAL } from '../lib/fluxnode';
-import { addressLabel } from '../lib/labels';
 import { AddressLink } from '../components/AddressLink';
 import { ErrorPanel, LoadingPanel } from '../components/Feedback';
 import { FluxNodeStats } from '../components/FluxNodeStats';
@@ -132,7 +131,7 @@ export function FluxNodes() {
         </div>
       </header>
 
-      <div className="grid gap-4 lg:grid-cols-2">
+      <div className="space-y-4">
         <section className="card p-4">
           <h2 className="mb-3 text-sm font-semibold">Tier distribution</h2>
           <div className="space-y-2">
@@ -185,11 +184,7 @@ export function FluxNodes() {
                     <span className="w-6 shrink-0 text-right text-xs text-slate-400 tabular-nums">
                       {i + 1}
                     </span>
-                    <AddressLink
-                      address={address}
-                      shorten={!addressLabel(address)}
-                      className="min-w-0 truncate"
-                    />
+                    <AddressLink address={address} className="min-w-0 truncate" />
                   </span>
                   <span className="flex shrink-0 items-center gap-2 text-xs tabular-nums">
                     <span className="hidden text-slate-400 sm:inline dark:text-slate-500">
