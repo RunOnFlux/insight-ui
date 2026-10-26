@@ -1,0 +1,51 @@
+name: CI & Publish
+
+on:
+  push:
+    branches: [master, modern-ui]
+  pull_request:
+    branches: [master, modern-ui]
+  release:
+    types: [published]
+
+jobs:
+  frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24.x"
+      - run: npx --yes yarn@1 install --frozen-lockfile
+      - run: npx --yes yarn@1 type-check
+      - run: npx --yes yarn@1 lint
+      - run: npx --yes yarn@1 format:check
+      # public/ is the package's site: it must be exactly what the frontend builds to.
+      - run: npx --yes yarn@1 deploy
+      - run: git diff --exit-code -- ../public && test -z "$(git status --porcelain -- ../public)"
+
+  publish:
+    needs: frontend
+    if: github.event_name == 'release'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24.x"
+          registry-url: "https://registry.npmjs.org"
+      - run: npm install -g npm@12.2.1
+      - name: Set version from release tag
+        run: |
+          VERSION="${{ github.event.release.tag_name }}"
+          VERSION="${VERSION#v}"
+          npm version "$VERSION" --no-git-tag-version --allow-same-version
+      # The trusted publisher allows staging only: a maintainer approves each version on
+      # npmjs.com with 2FA before it is public.
+      - run: npm stage publish --provenance --access public
