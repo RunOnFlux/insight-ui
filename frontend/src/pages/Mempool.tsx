@@ -1,7 +1,7 @@
 import { useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSocketRoom } from '../lib/socket';
-import { useCurrency } from '../context/CurrencyContext';
+import { useCurrency } from '../context/currency';
 import { formatInt, formatNumber } from '../lib/format';
 import { usePageTitle } from '../hooks/usePageTitle';
 import { Spinner } from '../components/Feedback';

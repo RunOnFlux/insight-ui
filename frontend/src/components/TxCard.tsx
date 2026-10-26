@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { Tx } from '../types/api';
-import { useCurrency } from '../context/CurrencyContext';
+import { useCurrency } from '../context/currency';
 import { formatDateTime, timeAgo } from '../lib/format';
 import { aggregateVin, aggregateVout, fluxNodeFields, isFluxNodeTx } from '../lib/txDisplay';
 import type { AggregatedEntry } from '../lib/txDisplay';

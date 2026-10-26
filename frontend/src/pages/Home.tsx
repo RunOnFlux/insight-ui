@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { api } from '../lib/api';
 import { useSocketRoom } from '../lib/socket';
-import { useCurrency } from '../context/CurrencyContext';
+import { useCurrency } from '../context/currency';
 import type { InvTx } from '../types/api';
 import { formatHashrate, formatInt, formatNumber, formatUsd } from '../lib/format';
 import { BlocksTable } from './../components/BlocksTable';

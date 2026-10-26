@@ -1,7 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { formatFlux, formatHashrate, formatInt, formatNumber } from '../lib/format';
-import { DaysSelector, StatChartCard, STAT_META } from '../components/StatChartCard';
-import type { StatType } from '../components/StatChartCard';
+import { DaysSelector, StatChartCard } from '../components/StatChartCard';
+import { STAT_META } from '../components/statMeta';
+import type { StatType } from '../components/statMeta';
 import { NotFound } from './NotFound';
 import { usePageTitle } from '../hooks/usePageTitle';
 

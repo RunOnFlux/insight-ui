@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../lib/api';
-import { useCurrency } from '../context/CurrencyContext';
+import { useCurrency } from '../context/currency';
 import { formatBytes, formatDateTime, formatFlux, formatInt } from '../lib/format';
 import { feeRatePerKb, isFluxNodeTx } from '../lib/txDisplay';
 import { CopyButton } from '../components/CopyButton';

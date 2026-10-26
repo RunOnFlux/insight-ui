@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../lib/api';
-import { useCurrency } from '../context/CurrencyContext';
+import { useCurrency } from '../context/currency';
 import { formatHashrate, formatInt, formatNumber, formatUsd } from '../lib/format';
 import { ErrorPanel, LoadingPanel } from '../components/Feedback';
 import { PoolShareBars } from '../components/PoolShareBars';
