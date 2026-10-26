@@ -62,6 +62,8 @@ export function Home() {
     block: () => {
       void queryClient.invalidateQueries({ queryKey: ['latest-blocks'] });
       void queryClient.invalidateQueries({ queryKey: ['sync'] });
+      void queryClient.invalidateQueries({ queryKey: ['info'] });
+      void queryClient.invalidateQueries({ queryKey: ['mining-info'] });
     },
   });
 
