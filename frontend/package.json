@@ -4,7 +4,7 @@
   "private": true,
   "version": "2.0.0",
   "type": "module",
-  "repository": "git://github.com/runonflux/insight-ui.git",
+  "repository": "https://github.com/runonflux/insight-ui.git",
   "license": "MIT",
   "scripts": {
     "dev": "vite",
