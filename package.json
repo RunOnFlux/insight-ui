@@ -2,7 +2,7 @@
   "name": "@runonflux/insight-ui",
   "description": "An open-source frontend for the Insight API. The Insight API provides you with a convenient, powerful and simple way to query and broadcast data on the flux network and build your own services with it.",
   "version": "2.0.0",
-  "repository": "https://github.com/runonflux/insight-ui.git",
+  "repository": "https://github.com/RunOnFlux/insight-ui.git",
   "files": [
     "bitcore-node",
     "public"
@@ -49,9 +49,9 @@
     "deploy": "cd frontend && yarn install && yarn deploy"
   },
   "bugs": {
-    "url": "https://github.com/runonflux/insight-ui/issues"
+    "url": "https://github.com/RunOnFlux/insight-ui/issues"
   },
-  "homepage": "https://github.com/runonflux/insight-ui",
+  "homepage": "https://github.com/RunOnFlux/insight-ui",
   "license": "MIT",
   "keywords": [
     "insight",
