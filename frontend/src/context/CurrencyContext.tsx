@@ -1,23 +1,12 @@
-import { createContext, useCallback, useContext, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../lib/api';
 import { formatBtc, formatFlux, formatUsd } from '../lib/format';
-
-export type Currency = 'FLUX' | 'USD' | 'BTC';
+import { CurrencyContext } from './currency';
+import type { Currency } from './currency';
 
 const STORAGE_KEY = 'insight-currency';
-
-interface CurrencyContextValue {
-  currency: Currency;
-  setCurrency: (c: Currency) => void;
-  /** Format a FLUX amount in the selected display currency. */
-  convert: (fluxValue: number) => string;
-  usdRate: number | undefined;
-  btcRate: number | undefined;
-}
-
-const CurrencyContext = createContext<CurrencyContextValue | null>(null);
 
 function initialCurrency(): Currency {
   const stored = localStorage.getItem(STORAGE_KEY);
@@ -69,10 +58,4 @@ export function CurrencyProvider({ children }: { children: ReactNode }): ReactNo
   );
 
   return <CurrencyContext.Provider value={value}>{children}</CurrencyContext.Provider>;
-}
-
-export function useCurrency(): CurrencyContextValue {
-  const ctx = useContext(CurrencyContext);
-  if (!ctx) throw new Error('useCurrency must be used within CurrencyProvider');
-  return ctx;
 }

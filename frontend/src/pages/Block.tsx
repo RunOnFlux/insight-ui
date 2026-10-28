@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../lib/api';
-import { useCurrency } from '../context/CurrencyContext';
+import { useCurrency } from '../context/currency';
 import { formatBytes, formatDateTime, formatInt, formatNumber } from '../lib/format';
 import { AddressLink } from '../components/AddressLink';
 import { CopyButton } from '../components/CopyButton';

@@ -4,7 +4,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { QRCodeSVG } from 'qrcode.react';
 import { api } from '../lib/api';
 import { useSocketRoom } from '../lib/socket';
-import { useCurrency } from '../context/CurrencyContext';
+import { useCurrency } from '../context/currency';
 import { formatFluxExact, formatInt } from '../lib/format';
 import { addressLabel } from '../lib/labels';
 import { CopyButton } from '../components/CopyButton';

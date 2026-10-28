@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../lib/api';
-import { useCurrency } from '../context/CurrencyContext';
-import type { Currency } from '../context/CurrencyContext';
+import { useCurrency } from '../context/currency';
+import type { Currency } from '../context/currency';
 import { SearchBar } from './SearchBar';
 import { Spinner } from './Feedback';
 import {
